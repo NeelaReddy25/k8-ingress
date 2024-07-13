@@ -1,0 +1,60 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app1
+  #these labels are deployment related labels
+  labels:
+    app: app1
+    purpose: ingress
+spec: 
+  selector:
+    matchLabels:
+      app: app1
+      purpose: ingress
+  #pod definition
+  template:
+    metadata:
+      labels:
+        app: nginx
+        purpose: ingress
+    spec:
+      containers:
+      - name: app1
+        image: neelareddy/app1:v1.0.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1
+spec:
+  selector:
+    app: app1
+    purpose: ingress
+  ports:
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: 80 #target-port
+---
+# aapiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: app1
+#   annotations:
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     # kubernetes.io/ingress.class: alb
+#     alb.ingress.kubernetes.io/target-type: ip
+#     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+#     alb.ingress.kubernetes.io/group.name: neelareddy
+# spec:
+#   # ingressClassName: alb
+#   rules:
+#   - host: "app1.neelareddy.store" #ALB RULE
+#     http:
+#       paths:
+#       - path: "/"
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: app1 #ALB Target group
+#             port:
+#               number: 80
