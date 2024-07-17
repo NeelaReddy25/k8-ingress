@@ -19,7 +19,7 @@ spec:
         purpose: ingress
     spec:
       containers:
-      - name: nginx
+      - name: app1
         image: neelareddy/app1:v1.0
 ---
 apiVersion: v1
