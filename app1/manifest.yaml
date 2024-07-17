@@ -39,7 +39,7 @@ spec:
   kind: Ingress
   metadata:
     name: app1
-    annotations:
+    # annotations:
       # alb.ingress.kubernetes.io/scheme: internet-facing
       # # kubernetes.io/ingress.class: alb
       # alb.ingress.kubernetes.io/target-type: ip
