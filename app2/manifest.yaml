@@ -46,7 +46,7 @@ metadata:
     # this annotation is useful to keep only ALB under joindevops group. if you don't give this it will create another ALB.
     alb.ingress.kubernetes.io/group.name: neelareddy
 spec:
-  # ingressClassName: alb
+  ingressClassName: alb
   rules:
   - host: "app2.neelareddy.store" #ALB RULE
     http:
