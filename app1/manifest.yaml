@@ -46,7 +46,7 @@ spec:
       alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
       alb.ingress.kubernetes.io/group.name: neelareddy
   spec:
-    # ingressClassName: alb
+    ingressClassName: alb
     rules:
     - host: "app1.neelareddy.store" #ALB RULE
       http:
