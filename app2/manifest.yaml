@@ -15,11 +15,11 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
+        app: app2
         purpose: ingress
     spec:
       containers:
-      - name: app2
+      - name: nginx
         image: neelareddy/app2:v1.0.0
 ---
 apiVersion: v1
